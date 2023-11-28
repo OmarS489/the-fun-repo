@@ -1,0 +1,12 @@
+from pyspark.sql import SparkSession
+import pyspark.sql.functions as F
+# import pandas as pd
+
+spark = SparkSession.builder.getOrCreate()
+
+# Read the data
+df = spark.read.csv("C:/Users/omars/the-fun-repo/data/CAPITALCOM_DXY, 1D.csv")
+
+# Show the data
+print(df.head(5))
+print(df.count())
