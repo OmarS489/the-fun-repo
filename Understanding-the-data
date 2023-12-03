@@ -7,6 +7,24 @@ spark = SparkSession.builder.getOrCreate()
 # Read the data
 df = spark.read.csv("C:/Users/omars/the-fun-repo/data/CAPITALCOM_DXY, 1D.csv")
 
+def remove_nan_columns(df):
+    # Drop columns with NaN values
+    df = df.dropna(how='any')
+    return df
+
+def remove_nan_rows(df):
+    # Drop rows with NaN values
+    df = df.na.drop()
+    return df
+
+def remove_duplicates(df):   
+    # Drop duplicates
+    df = df.dropDuplicates()
+    return df
+
+
+remove_nan_columns(df)
+remove_nan_rows(df)
 # Show the data
 print(df.head(5))
 print(df.count())
